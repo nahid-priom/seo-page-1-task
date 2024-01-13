@@ -13,7 +13,7 @@ import { SlCalender } from "react-icons/sl";
 
 const CardItem = () => {
   return (
-    <div className="w-[285px] rounded mx-auto bg-white h-28 mx-2">
+    <div className="w-[285px] rounded bg-white h-28 mx-2">
       <div className="flex justify-between items-center px-2 py-2">
         <div className="flex items-center gap-1">
           <img src={client} alt="client" className="w-6 h-6 rounded-full" />
@@ -31,10 +31,10 @@ const CardItem = () => {
             Lorem ipsum dolor sit amet curn...
           </p>
         </div>
-        <div>
+        <div className="flex">
           <div className="w-10  h-6 bg-gray-200 rounded flex justify-center items-center text-base font-semibold">
             <RiBriefcase4Fill size={13} />
-            <p className="text-xs">1/2</p>
+            <p className="text-xs ml-1">1/2</p>
           </div>
         </div>
       </div>
