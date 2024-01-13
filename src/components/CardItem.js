@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import client from "../assets/client.jpg";
 import person from "../assets/person.jpg";
 import p1 from "../assets/p-1.jpg";
@@ -12,6 +12,20 @@ import { CiLink } from "react-icons/ci";
 import { SlCalender } from "react-icons/sl";
 
 const CardItem = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+
+  const handleLinkClick = () => {
+    setIsModalOpen(true);
+  };
+  const handleFileUpload = (event) => {
+    const files = event.target.files;
+
+    setUploadedFiles([...uploadedFiles, ...files]);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div className="w-[285px] rounded bg-white h-28 mx-2">
       <div className="flex justify-between items-center px-2 py-2">
@@ -46,15 +60,61 @@ const CardItem = () => {
           <p className="text-[10px] font-semibold text-gray-500">12+</p>
         </div>
         <div className="flex gap-1 items-center">
-          <TiMessages size={11} className="font-bold"/>
+          <TiMessages size={11} className="font-bold" />
           <p className="text-[10px] font-semibold text-gray-500">15</p>
         </div>
         <div className="flex gap-1 items-center">
-          <CiLink size={11} className="font-bold"/>
+          <CiLink
+            size={11}
+            className="font-bold cursor-pointer"
+            onClick={handleLinkClick}
+          />
           <p className="text-[10px] font-semibold text-gray-500">25</p>
         </div>
+        {isModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <div className="bg-black bg-opacity-50 absolute inset-0"></div>
+            <div className="bg-white p-6 rounded-md z-10">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-lg font-semibold">Upload Attachments</h2>
+                <div className="w-6 ml-4 rounded-full h-6 flex justify-center items-center bg-red-500">
+                  <button
+                    onClick={handleCloseModal}
+                    className="text-white mb-1"
+                  >
+                    &times;
+                  </button>
+                </div>
+              </div>
+              <div className="space-y-4">
+                <input
+                  type="file"
+                  onChange={handleFileUpload}
+                  className="hidden"
+                  id="fileInput"
+                  multiple
+                />
+                <label
+                  htmlFor="fileInput"
+                  className="bg-blue-500 flex justify-center items-center text-white px-4 py-2 rounded cursor-pointer"
+                >
+                  Choose Files
+                </label>
+
+                <ul className="list-none p-0">
+                  {uploadedFiles.map((file, index) => (
+                    <li key={index} className="text-gray-700 underline">
+                      {file.name} ({file.type})
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="flex gap-1 items-center">
-          <SlCalender size={11} className="font-bold"/>
+          <SlCalender size={11} className="font-bold" />
           <p className="text-[10px] font-semibold text-gray-500">30-12-2022</p>
         </div>
       </div>
