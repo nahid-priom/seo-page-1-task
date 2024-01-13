@@ -27,7 +27,7 @@ const CardItem = () => {
     setIsModalOpen(false);
   };
   return (
-    <div className="w-[285px] rounded bg-white h-28 mx-2">
+    <div className="w-[350px] rounded bg-white h-28 mx-2">
       <div className="flex justify-between items-center px-2 py-2">
         <div className="flex items-center gap-1">
           <img src={client} alt="client" className="w-6 h-6 rounded-full" />

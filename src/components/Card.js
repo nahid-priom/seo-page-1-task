@@ -3,7 +3,7 @@ import CardItem from "./CardItem";
 
 const Card = ({ title, color }) => {
   return (
-    <div className="w-[320px] m-4 flex flex-col h-[720px] bg-gray-200 rounded flex-1">
+    <div className="m-4 flex flex-col max-h-screen bg-gray-200 rounded flex-1">
       <div className="flex justify-between px-4 py-4">
         <div className="flex gap-2">
           {color && <div className={`w-6 h-6 ${color} rounded-l-full`}></div>}
@@ -14,6 +14,9 @@ const Card = ({ title, color }) => {
         </span>
       </div>
       <div className="flex flex-col gap-2 overflow-y-auto">
+        <CardItem />
+        <CardItem />
+        <CardItem />
         <CardItem />
         <CardItem />
         <CardItem />
