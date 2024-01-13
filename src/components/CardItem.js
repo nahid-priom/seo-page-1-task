@@ -103,7 +103,7 @@ const CardItem = () => {
 
                 <ul className="list-none p-0">
                   {uploadedFiles.map((file, index) => (
-                    <li key={index} className="text-gray-700 underline">
+                    <li key={index} className="text-gray-700">
                       {file.name} ({file.type})
                     </li>
                   ))}
